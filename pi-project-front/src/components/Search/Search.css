@@ -1,0 +1,25 @@
+@media only screen and (min-device-width: 900px) {
+    .search{
+    text-align: center;
+    margin: 25%;
+    margin-top: 6%;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .search select{
+        font-size: 1rem;
+        padding: 10px;
+        margin: 16px;
+    }
+
+    .search button{
+        margin: 16px;
+    }
+}
+
+@media only screen and (max-device-width: 899px) {
+    .search{
+    margin: 20px;
+    }
+}

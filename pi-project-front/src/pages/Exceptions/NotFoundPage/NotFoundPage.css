@@ -1,0 +1,10 @@
+.not-found{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.not-found div{
+    margin: 20px;
+}

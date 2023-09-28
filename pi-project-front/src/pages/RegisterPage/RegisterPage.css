@@ -1,0 +1,20 @@
+.register-page{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 50px 200px;
+}
+
+.register-page button{
+    margin: 16px;
+}
+
+.register-page input, textarea{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
