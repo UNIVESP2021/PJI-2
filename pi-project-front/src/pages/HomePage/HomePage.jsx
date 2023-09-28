@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/*eslint-disable no-unused-vars */
 import axios from 'axios';
 import Search from '../../components/Search/Search';
 import { useContext, useEffect } from 'react';
@@ -9,7 +9,7 @@ export default function HomePage() {
   const { titles, setTitles } = useContext(PiContext);
 
   //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
-  const top10Films = [
+ /* const top10Films = [
     {
       id: 1,
       title: 'Controlador Programável',
@@ -41,21 +41,21 @@ export default function HomePage() {
       url: 1957,
     },
   ]; //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
-
+*/
   useEffect(() => {
-    //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
+  /*  //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
     setTitles(top10Films);
     console.log(titles); //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
 
-    /* 
-    axios.get('API_ENDPOINT') // SUBSTITUIR 'API_ENDPOINT' pela URL da API
+    */
+    axios.get('http://localhost:8080/doc/') // SUBSTITUIR 'API_ENDPOINT' pela URL da API
       .then(response => {
         setTitles(response.data);
       })
       .catch(error => {
         console.error(error);
       });
-    */
+
   }, []);
 
   return (
