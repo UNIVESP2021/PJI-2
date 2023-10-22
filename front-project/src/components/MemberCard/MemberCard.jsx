@@ -3,6 +3,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import './MemberCard.css';
 
 export default function MemberCard({ memberInfo }) {
   return (
@@ -15,7 +16,7 @@ export default function MemberCard({ memberInfo }) {
           alt="photo member"
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
+          <Typography gutterBottom variant="h6" component="div" className="name">
             {memberInfo.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">

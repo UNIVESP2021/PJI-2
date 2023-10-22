@@ -27,4 +27,8 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    .project{
+        padding: 10px;
+    }
 }

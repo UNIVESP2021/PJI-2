@@ -18,3 +18,18 @@
     font-size: 1.5rem;
     margin-left: 20px;
 }
+
+@media screen and (max-width: 420px) {
+
+    .nav-bar{
+        padding: 30px 20px;
+    }
+
+    .nav-bar img{
+        width: 70%;
+    }
+
+    .list a{
+        font-size: 1em;
+    }
+  }

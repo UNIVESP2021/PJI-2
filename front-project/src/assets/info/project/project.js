@@ -1,7 +1,7 @@
 export const projectInfo = [
   {
     info: 'Disciplina',
-    description: 'Projeto Integrador em Computação 1 - PJI110',
+    description: 'DRP02 - Projeto Integrador em Computação II-Turma 001 - GRUPO 17',
   },
   {
     info: 'Tema escolhido',
@@ -9,7 +9,7 @@ export const projectInfo = [
       'Acesso informatizado a informações relevantes a equipamentos para mantenedores.',
   },
   {
-    info: 'Título provisório do trabalho',
+    info: 'Título do trabalho',
     description:
       'Plataforma Web Para Cadastro e Consulta de Normas e Informações Técnicas de Equipamentos Industriais.',
   },
@@ -29,6 +29,6 @@ export const projectInfo = [
   },
   {
     info: 'Orientador do PI',
-    description: 'Marcio Henrique Nardez',
+    description: 'João Lorena de Jesus Gomes',
   },
 ];

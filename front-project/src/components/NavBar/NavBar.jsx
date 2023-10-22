@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import './NavBar.css';
 import logo from '../../assets/imgs/logo-univesp.png';
 import { NavLink } from 'react-router-dom';

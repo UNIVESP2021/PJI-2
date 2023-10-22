@@ -15,7 +15,7 @@ export default function NotFoundPage() {
       <Typography gutterBottom variant="h1" component="div">
         Erro 404
       </Typography>
-      <Typography variant="h4" component="div" color="text.secondary">
+      <Typography variant="h4" component="div" color="text.secondary" className='message'>
         Oops! Parece que a página que você está tentando acessar não existe.
       </Typography>
       <Typography variant="h5" component="div" color="text.secondary">

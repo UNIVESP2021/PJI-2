@@ -45,22 +45,52 @@ export default function DetailsPage() {
     return <div className="loading">Carregando...</div>;
   }
 
+  var fontSize = 100;
+
+  const handleOnClickIncrease = () => {
+    var elementDetails = document.getElementById('details');
+    var increaseDecrease = 20;
+
+    fontSize = fontSize + increaseDecrease;
+    elementDetails.style.fontSize = fontSize + '%';
+
+    return fontSize
+  };
+
+  const handleOnClickDecrease = () => {
+    var elementDetails = document.getElementById('details');
+    var decreaseDecrease = 20;
+
+    fontSize = fontSize - decreaseDecrease;
+    elementDetails.style.fontSize = fontSize + '%';
+
+    return fontSize
+  };
+
   return (
-    <div className="details">
-      <h1>{fileDetails.title}</h1>
-      <p>{fileDetails.description}</p>
-      <Button
-        onClick={handleOnClick}
-        variant="contained"
-        style={{
-          backgroundColor: '#5D9817',
-          width: '100px',
-          alignSelf: 'center',
-        }}
-        size="large"
-      >
-        Manual
-      </Button>
+    <div className='page-details'>
+      <div className="btn-container">
+        <button onClick={handleOnClickIncrease} className="increase-font" id="increase-font" title="Aumentar fonte">A +</button>
+        <button onClick={handleOnClickDecrease} className="decrease-font" id="decrease-font" title="Diminuir fonte">A -</button>
+      </div>
+      <div className="details" id="details" style={{
+            fontSize: '100%',
+          }}>
+        <h1>{fileDetails.title}</h1>
+        <p>{fileDetails.description}</p>
+        <Button
+          onClick={handleOnClick}
+          variant="contained"
+          style={{
+            backgroundColor: '#5D9817',
+            width: '100px',
+            alignSelf: 'center',
+          }}
+          size="large"
+        >
+          Manual
+        </Button>
+      </div>
     </div>
   );
 }

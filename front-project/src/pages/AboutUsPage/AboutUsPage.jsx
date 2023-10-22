@@ -17,6 +17,9 @@ export default function AboutUsPage() {
 
   return (
     <div className="about-us-page">
+      <div className="project">
+        <CardInformationProject />
+      </div>
       <div className="group">
         <Typography gutterBottom variant="h4" component="div">
           Você está em boa companhia
@@ -27,9 +30,6 @@ export default function AboutUsPage() {
               <MemberCard key={i} memberInfo={member} />
             ))}
         </div>
-      </div>
-      <div className="project">
-        <CardInformationProject />
       </div>
     </div>
   );
