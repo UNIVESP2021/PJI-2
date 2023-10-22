@@ -18,3 +18,11 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
+.error {
+    color: #721c24;
+    background-color: #F8D7DA;
+    border: 1px solid #F5C6CB;
+    padding: 5px;
+    border-radius: 5px;
+  }

@@ -3,126 +3,98 @@ import { Button } from '@mui/material';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
-import axios from 'axios';
 import { PiContext } from '../../context/PiContext';
+import { useInsertDocument } from '../../hooks/useInsertDocument';
 
 export default function RegisterPage() {
-    const {setTitles} = useContext(PiContext);
-    const navigate = useNavigate();
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [url, setUrl] = useState('');
+  const { setDocuments } = useContext(PiContext);
+  const navigate = useNavigate();
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [url, setUrl] = useState('');
+  const [formError, setFormError] = useState('');
 
-    const handleTitleChange = (event) => {
-        setTitle(event.target.value);
-    };
+  const { insertDocument, response } = useInsertDocument('manuals');
 
-    const handleDescriptionChange = (event) => {
-        setDescription(event.target.value);
-    };
-    const handleUrlChange = (event) => {
-        setUrl(event.target.value);
-    };
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
 
-    const updateTitles = () => {
-        axios
-            .get('http://localhost:8080/doc/') // SUBSTITUIR 'API_ENDPOINT' pela URL da API
-            .then((response) => {
-                setTitles(response.data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    };
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+  const handleUrlChange = (event) => {
+    setUrl(event.target.value);
+  };
 
-    const handleUploadClick = () => {
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('description', description);
-        formData.append('url', url);
+  const handleUploadClick = (e) => {
+    e.preventDefault();
+    setFormError('');
 
-        axios
-            .post('http://localhost:8080/doc/', formData) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
-            .then((response) => {
-                console.log(response.data); // Ver resposta da API, tratar, colocar msg?
-                setTitle('');
-                setDescription('');
-                setUrl('');
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
-        const handleUploadClick = () => {
-            const formData = new FormData();
-            formData.append('title', title);
-            formData.append('description', description);
-            formData.append('url', url);
-
-            axios
-                .post('http://localhost:8080/doc/', formData)
-                .then((response) => {
-                    console.log(response.data); // Ver resposta da API, tratar, colocar msg?
-                    setTitle('');
-                    setDescription('');
-                    setUrl('');
-
-                    updateTitles(); // Atualiza os títulos após o envio do formulário
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-
-            updateTitles();
-        };
-
-        return (
-            <div className="register-page">
-                <h1>Cadastro de Manual</h1>
-                <input
-                    type="text"
-                    placeholder="Título"
-                    value={title}
-                    onChange={handleTitleChange}
-                />
-                <textarea
-                    placeholder="Descrição"
-                    value={description}
-                    onChange={handleDescriptionChange}
-                />
-                <input
-                    type="text"
-                    placeholder="Insira aqui a URL do manual"
-                    value={url}
-                    onChange={handleUrlChange}
-                />
-                <div>
-                    <Button
-                        onClick={handleUploadClick}
-                        variant="contained"
-                        style={{
-                            backgroundColor: '#5D9817',
-                            width: '100px',
-                            alignSelf: 'center',
-                        }}
-                        size="large"
-                    >
-                        Envio
-                    </Button>
-                    <Button
-                        onClick={() => navigate(-1)}
-                        variant="contained"
-                        style={{
-                            backgroundColor: '#5e0a0a',
-                            width: '100px',
-                            alignSelf: 'center',
-                        }}
-                        size="large"
-                    >
-                        Voltar
-                    </Button>
-                </div>
-            </div>
-        );
+    if (!title || !description || !url) {
+      setFormError('Favor preencher todos os campos');
     }
+    if (formError) return;
+
+    insertDocument({
+      title,
+      description,
+      url,
+    });
+
+    navigate('/');
+  };
+
+  return (
+    <div className="register-page">
+      <h1>Cadastro de Manual</h1>
+      <input
+        name="title"
+        type="text"
+        placeholder="Título"
+        value={title}
+        onChange={handleTitleChange}
+      />
+      <textarea
+        placeholder="Descrição"
+        name="description"
+        value={description}
+        onChange={handleDescriptionChange}
+      />
+      <input
+        name="url"
+        type="text"
+        placeholder="Insira aqui a URL do manual"
+        value={url}
+        onChange={handleUrlChange}
+      />
+      <div>
+        <Button
+          onClick={handleUploadClick}
+          variant="contained"
+          style={{
+            backgroundColor: '#5D9817',
+            width: '100px',
+            alignSelf: 'center',
+          }}
+          size="large"
+        >
+          Envio
+        </Button>
+        <Button
+          onClick={() => navigate(-1)}
+          variant="contained"
+          style={{
+            backgroundColor: '#5e0a0a',
+            width: '100px',
+            alignSelf: 'center',
+          }}
+          size="large"
+        >
+          Voltar
+        </Button>
+      </div>
+      {response.error && <p className="error">{response.error}</p>}
+    </div>
+  );
 }

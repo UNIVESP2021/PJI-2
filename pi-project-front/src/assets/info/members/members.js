@@ -1,3 +1,4 @@
+import PhotoAygon from './photos/aygon.jpg';
 import PhotoAllan from './photos/allan.jpg';
 import PhotoEduardo from './photos/eduardo.jpeg';
 import PhotoHemerson from './photos/hemerson.jpeg';
@@ -14,7 +15,7 @@ export const membersInfo = [
   },
   {
     name: 'Aygon Matheus Mendonça',
-    photo: '',
+    photo: PhotoAygon,
     email: '2107009@aluno.univesp.br',
   },
   {

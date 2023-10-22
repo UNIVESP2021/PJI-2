@@ -9,7 +9,7 @@ const api = axios.create({
 
 export const getAllManuals = async () => {
   try {
-    const manuals = await api.get('http://localhost:8080/doc');
+    const manuals = await api.get('http://localhost:8080/manual');
     return manuals.data;
   } catch (err) {
     throw err;
@@ -17,5 +17,5 @@ export const getAllManuals = async () => {
 };
 
 export const postManual = async (manual) => {
-  return await api.post('http://localhost:8080/doc', manual);
+  return await api.post('http://localhost:8080/manual', manual);
 };
