@@ -11,30 +11,30 @@ export default function DetailsPage() {
   const [fileDetails, setFileDetails] = useState(null);
 
   //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
-  const arquivo = {
+ /* const arquivo = {
     id: 10,
     title: 'Controlador Lógico Programável PLC300 V1.20',
     description:
       'O PLC300 está disponível em seis modelos diferentes. Com ou sem HMI; standard ou plus e uma versão com HMI, porém sem membrana, em que o usuário poderá personalizar a aparência do PLC, seguindo especificações presentes no CD do produto. A identificação do PLC300 é feita por um sufixo de duas ou três letras.',
     url: 'https://static.weg.net/medias/downloadcenter/h92/hbe/WEG-plc300-adendo-ao-manual-do-usuario-10000958880-1.20-manual-portugues-br.pdf',
   }; //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
-
+*/
   useEffect(() => {
     const fileId = id;
 
     //ESSE BLOCO ABAIXO NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
-    console.log('Esse é o parametro' + fileId);
+   /* console.log('Esse é o parametro' + fileId);
     setFileDetails(arquivo);
     console.log(arquivo); //ESSE BLOCO ACIMA NÃO SERÁ NECESSARIO APOS A CONCLUSAO DA API
-   /*
+   /**/
     axios
-      .get(`http://localhost:8080/manual/${fileId}`) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
+      .get(`http://localhost:8080/doc/${fileId}`) // SUBSTITUIR 'API_ENDPOINT' pela URL da API
       .then((response) => {
         setFileDetails(response.data);
       })
       .catch((error) => {
         console.error(error);
-      });*/
+      });
   }, [id]);
 
   const handleOnClick = () => {

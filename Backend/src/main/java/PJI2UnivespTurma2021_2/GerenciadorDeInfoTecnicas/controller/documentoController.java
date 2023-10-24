@@ -8,9 +8,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/doc")
+@CrossOrigin("http://localhost:3000/")
 public class documentoController {
 
   @Autowired
@@ -18,9 +20,10 @@ public class documentoController {
 
   @PostMapping
   @Transactional
-  public void cadastrar(@RequestBody @Valid DadosCadastroDocumento dados){
+  public void cadastrar(@RequestBody @Valid DadosCadastroDocumento dados) {
     repository.save(new Documento(dados));
   }
+
 
   @GetMapping
   public Page<DadosListagemDocumento> listar (@PageableDefault(size=10, sort = {"nome"}) Pageable paginacao) {

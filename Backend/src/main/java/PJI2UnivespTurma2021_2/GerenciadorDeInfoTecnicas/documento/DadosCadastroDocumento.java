@@ -4,5 +4,4 @@ public record DadosCadastroDocumento(
         String nome,
         String descricao,
         String link
-) {
-}
+){}

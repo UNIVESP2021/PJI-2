@@ -30,6 +30,12 @@ public class Documento {
         this.link = dados.link();
     }
 
+    public Documento(String nome, String descricao, String url) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.link = link;
+        this.ativo = true;
+    }
 
 
     public void atualizarInformacoes(DadosAtualizaDocumento dados) {
