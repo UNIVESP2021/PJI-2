@@ -1,0 +1,10 @@
+.each-information{
+    padding-bottom: 20px;
+}
+
+
+@media only screen and (max-device-width: 899px) {
+    .each-information p{
+        width: 96%;
+    }
+}
