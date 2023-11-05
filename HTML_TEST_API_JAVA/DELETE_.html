@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de Requisição DELETE</title>
+</head>
+<body>
+<h1>Teste de Requisição DELETE</h1>
+
+<!-- Campo para inserir o ID da entrada a ser deletada -->
+<label for="id">ID da Entrada a Deletar:</label>
+<input type="text" id="id"><br><br>
+
+<!-- Botão para confirmar a deleção -->
+<button id="deletarEntrada">Deletar Entrada</button>
+
+<div id="resposta"></div>
+<div id="mensagemDelecao" style="color: green; font-weight: bold;"></div>
+
+<script>
+  document.getElementById('deletarEntrada').addEventListener('click', function() {
+    // Pede confirmação antes de deletar
+    var confirmacao = confirm("Tem certeza que deseja deletar esta entrada?");
+    if (confirmacao) {
+      var id = document.getElementById('id').value;
+      var xhr = new XMLHttpRequest();
+      xhr.open('DELETE', 'http://localhost:8080/doc/' + id);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+
+      xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+          var resposta = JSON.parse(xhr.responseText);
+          document.getElementById('resposta').innerText = 'Entrada deletada: ' + JSON.stringify(resposta);
+          // Exibe uma mensagem de sucesso abaixo do botão
+          document.getElementById('mensagemDelecao').innerText = 'Deleção concluída com sucesso!';
+        } else {
+          console.error('Erro ao fazer a requisição:', xhr);
+        }
+      };
+
+      xhr.onerror = function() {
+        console.error('Erro ao fazer a requisição:', xhr);
+      };
+
+      xhr.send();
+    }
+  });
+</script>
+</body>
+</html>

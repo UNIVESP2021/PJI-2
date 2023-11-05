@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de Requisição POST</title>
+</head>
+<body>
+<h1>Teste de Requisição POST</h1>
+
+<!-- Campos do formulário -->
+<label for="nome">Nome:</label>
+<input type="text" id="nome"><br><br>
+
+<label for="descricao">Descrição:</label>
+<input type="text" id="descricao"><br><br>
+
+<label for="link">Link:</label>
+<input type="text" id="link"><br><br>
+
+<button id="enviarRequisicao">Enviar Requisição POST</button>
+
+<div id="resposta"></div>
+
+<script>
+  document.getElementById('enviarRequisicao').addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:8080/doc');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function() {
+      if (xhr.status >= 200 && xhr.status < 400) {
+        var resposta = JSON.parse(xhr.responseText);
+        document.getElementById('resposta').innerText = 'Resposta da API: ' + JSON.stringify(resposta);
+      } else {
+        console.error('Erro ao fazer a requisição:', xhr);
+      }
+    };
+
+    xhr.onerror = function() {
+      console.error('Erro ao fazer a requisição:', xhr);
+    };
+
+    var dados = JSON.stringify({
+      "nome": document.getElementById('nome').value,
+      "descricao": document.getElementById('descricao').value,
+      "link": document.getElementById('link').value
+    });
+
+    xhr.send(dados);
+  });
+</script>
+</body>
+</html>
